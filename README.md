@@ -26,7 +26,7 @@ An entry for the [news-image-20261125](https://make.fun/bounty/news-image-202611
 
 The PNG was drawn during the build (Pillow, offline) and committed to this repository. The entry program itself (`main.py`) is standard-library-only: it simply copies the committed `entry.png` to the output directory — the pattern the competition's own starter uses ("the simplest program copies an image the repository holds").
 
-This matters because the grader runs the program in an environment where "standard library only: nothing is installed before it runs". A program that imports Pillow would fail there with `ModuleNotFoundError` even though it works locally. This entry program imports only `argparse`, `hashlib`, `os`, `sys`, `pathlib`, and `shutil`, makes no network calls, and is fully deterministic: the same committed bytes are copied every run.
+This matters because the grader runs the program in an environment where "standard library only: nothing is installed before it runs". A program that imports Pillow would fail there with `ModuleNotFoundError` even though it works locally. This entry program imports only `argparse`, `hashlib`, `os`, `struct`, `sys`, `pathlib`, and `shutil`, makes no network calls, and is fully deterministic: the same committed bytes are copied every run.
 
 Before writing, the program verifies the image: PNG magic bytes, 1024×1024 dimensions, and size at most 1 MiB. After copying, it reads the output back and checks the size and SHA-256 digest match the committed image.
 
